@@ -2,35 +2,11 @@
   description = "NixOS base for jetson testing";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    base.url = "github:spiralblue/jetson-base-flake/master";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
-    with inputs;
-    let
-      lib = nixpkgs.lib;
-      system = "aarch64-linux";
-    in
+  outputs = { self, base, ... }@inputs:
     {
-      nixosConfigurations = {
-        main-pc = lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit inputs;
-          };
-          modules = [
-            ./configuration.nix
-          ];
-        };
-      };
-      config = lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs;
-        };
-        modules = [
-          ./configuration.nix
-        ];
-      };
+      nixosConfigurations.jetson-dev = base.config;
     };
 }
