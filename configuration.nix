@@ -25,6 +25,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  networking.hostId = "deadbeef"; # Set this to a unique value for each machine.
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   networking.hostName = "jetson-dev"; # Define your hostname.
