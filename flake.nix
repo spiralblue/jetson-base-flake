@@ -12,7 +12,7 @@
       system = "aarch64-linux";
     in
     {
-      config = lib.nixosSystem {
+      nixosConfigurations.jetson-dev = lib.nixosSystem {
         inherit system;
         specialArgs = {
           inherit inputs;
