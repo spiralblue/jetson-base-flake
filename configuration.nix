@@ -9,7 +9,12 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      (builtins.fetchTarball "https://github.com/anduril/jetpack-nixos/archive/master.tar.gz" + "/modules/default.nix")
     ];
+
+  hardware.nvidia-jetpack.enable = true;
+  hardware.nvidia-jetpack.som = "xavier-nx-emmc"; # Other options include orin-agx, xavier-nx, and xavier-nx-emmc
+  hardware.nvidia-jetpack.carrierBoard = "devkit";
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
