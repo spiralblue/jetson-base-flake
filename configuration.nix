@@ -12,7 +12,7 @@
       (
         (builtins.fetchTarball {
           url = "https://github.com/anduril/jetpack-nixos/archive/master.tar.gz";
-          sha256 = "";
+          sha256 = "1jyzpzp0929cgfzf7whz2m37fy2rbjhp6vxzyzalk0a90645jm1d";
         }) + "/modules/default.nix"
       )
     ];
