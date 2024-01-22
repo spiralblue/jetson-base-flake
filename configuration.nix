@@ -85,6 +85,10 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     tmux
+
+    (pkgs.writeShellScriptBin "remote-switch" ''
+      sudo nix flake update /etc/nixos && sudo nixos-rebuild switch -L -v --flake /etc/nixos
+    '')
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
