@@ -84,7 +84,17 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    curl
     tmux
+    pv
+    nload
+    htop
+    git
+    jq
+    usbutils
+    ncdu
+    pciutils
+    ripgrep
 
     (pkgs.writeShellScriptBin "remote-switch" ''
       sudo nix flake update /etc/nixos && sudo nixos-rebuild switch -L -v --flake /etc/nixos
