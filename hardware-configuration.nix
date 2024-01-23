@@ -38,7 +38,7 @@
       fsType = "vfat";
     };
 
-  fileSystems."/ssd_root" =
+  fileSystems."/home" =
     {
       device = "/dev/disk/by-label/data";
       fsType = "ext4";

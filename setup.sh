@@ -86,13 +86,8 @@ sudo mkdir -p /mnt/boot
 sudo mount $emmc_boot_partition /mnt/boot
 
 # Mount data partition
-sudo mkdir -p /mnt/ssd_root
-sudo mount $ssd_data_partition /mnt/ssd_root
-
-# Hardlink (relative) child folders in SSD root to /var and /home
-sudo mkdir -p /mnt/ssd_root/var /mnt/ssd_root/home
-sudo ln -r -s /mnt/ssd_root/var /mnt/var
-sudo ln -r -s /mnt/ssd_root/home /mnt/home
+sudo mkdir -p /mnt/home
+sudo mount $ssd_data_partition /mnt/home
 
 # Generate config
 sudo nixos-generate-config --root /mnt
