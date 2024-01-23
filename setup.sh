@@ -96,3 +96,10 @@ sudo ln -r -s /mnt/ssd_root/home /mnt/home
 
 # Generate config
 sudo nixos-generate-config --root /mnt
+
+# Download the flake
+mkdir -p /mnt/etc/nixos
+sudo curl -o /mnt/etc/nixos/flake.nix https://raw.githubusercontent.com/spiralblue/jetson-base-flake/master/_remote_flake.nix
+
+# Install nixos
+sudo nixos-install --root /mnt --flake /mnt/etc/nixos#jetson-dev
