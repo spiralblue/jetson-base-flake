@@ -9,12 +9,6 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      (
-        (builtins.fetchTarball {
-          url = "https://github.com/anduril/jetpack-nixos/archive/master.tar.gz";
-          sha256 = "sha256:082y6qwxlhf0mpjgl4rsqn6g5d0fkgnyldy4y95bzbyr2y5rys42";
-        }) + "/modules/default.nix"
-      )
     ];
 
   hardware.nvidia-jetpack.enable = true;
