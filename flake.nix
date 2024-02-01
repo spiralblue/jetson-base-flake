@@ -16,13 +16,26 @@
       system = "aarch64-linux";
     in
     {
-      config = lib.nixosSystem {
+      nixosConfigurations.jetson-dev = lib.nixosSystem {
         inherit system;
         specialArgs = {
           inherit inputs;
         };
         modules = [
           ./configuration.nix
+          ./jetson-dev.nix
+          jetpack-nixos.nixosModules.default
+        ];
+      };
+
+      nixosConfigurations.jetson-tester = lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs;
+        };
+        modules = [
+          ./configuration.nix
+          ./jetson-tester.nix
           jetpack-nixos.nixosModules.default
         ];
       };

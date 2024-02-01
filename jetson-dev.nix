@@ -4,6 +4,7 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
+  networking.hostName = "jetson-dev"; # Define your hostname.
   imports =
     [
       (modulesPath + "/installer/scan/not-detected.nix")
@@ -13,6 +14,24 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
+
+  fileSystems."/" =
+    {
+      device = "rootpool/root";
+      fsType = "zfs";
+    };
+
+  fileSystems."/nix" =
+    {
+      device = "rootpool/nix";
+      fsType = "zfs";
+    };
+
+  fileSystems."/boot" =
+    {
+      device = "/dev/disk/by-label/boot";
+      fsType = "vfat";
+    };
 
   swapDevices = [ ];
 
